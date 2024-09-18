@@ -1,0 +1,22 @@
+{
+  "name": "devtender",
+  "version": "1.0.0",
+  "description": "devtender backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "express",
+    "mongodb",
+    "mongose"
+  ],
+  "author": "Stephen Jaramillo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
