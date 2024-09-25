@@ -16,4 +16,24 @@
 - Play with routes and route extensions ex. /hello, /, hello/,, /xyz
 - Order of routes matters a lot
 - Install postman & test http of api call like Get, Post, and Delete 
-- 
+- Exploring routing and use of ?, +  , () * in the routes
+- Use of regex in routes /a/ , /.*fly$/
+- Reading query, params and dynamic routes
+
+- Multiple Route Handlers - Play with the code
+- next()
+- next function and errors along with res.send()
+- app.use("/route", rH, [rH2, rH3], rH4, rH5);
+- What is middleware? Why do we need it?
+- How express JS basically handle request behind the scenes
+- What difference between app.use() vs app.all()
+- Write a dummy auth middleware for admin auth path and user auth path
+- Error handling towards handling app.use("/", (err, req, res, next) => {})
+
+- Create a free cluster on MongoDB official website
+- Install moogoes library
+- Connect your applications to the Databasse "Connection url"/devTender
+- Call the connectDB functions and connect to dataBase before starting application and runnning and listening on 5000 
+- Create a userSchema & user Model
+- Create a POST /signup API to add database
+- Push some documents using calls from postman
