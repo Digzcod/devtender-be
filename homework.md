@@ -37,3 +37,19 @@
 - Create a userSchema & user Model
 - Create a POST /signup API to add database
 - Push some documents using calls from postman
+
+- Explore schema types documentations
+- Add required, unique, lowercase, min, minlength, trim
+- Create a custom validate function for gender,
+- Improve the DB schema - Put all appropriate validations on each field in Schema
+- Add timestamps to the user Schema
+- Add API level validation on Patch request & Sign-up post api
+- Data Sanitizing - Add API validation for each field
+- Install Validator
+- Explore Validator funtions library
+- Important note Never Trust request.body || req.body
+
+- Validate Data sign-up API
+- Install bcrypt package
+- Create PasswordHash using brcypt.hash  is encripted password
+- Create login api logic 
