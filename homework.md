@@ -53,3 +53,21 @@
 - Install bcrypt package
 - Create PasswordHash using brcypt.hash  is encripted password
 - Create login api logic 
+- Compare passoword and throw errors if email or password  is invalid
+
+- install cookie-parser 
+- just send a dumy cookie to user
+- create Get / profile APi and check if you get the cookie back
+- In login API, after email and password validations, create a JWT token and send it to user in cookies
+- Read the cookies inside your profile API and and find the logged user
+- UserAuth Middleware 
+- Add the userAuth middleware in profile  Auth and a new sendConnectionRequest API
+- Set the expriy of JWT token and cookies to 7days
+- Create UserSchema method to getJWT()
+- Create UserSchema method to tocomprepassword(passwordInputByUser)
+
+- Explore tinder APIs
+- Create a list all API you can think of in Dev Tinder
+- Group multiple routes under repective routers 
+- Create authRouter, profileRouter, requestRouter
+- Import these routers in app.js

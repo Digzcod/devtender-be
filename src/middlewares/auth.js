@@ -13,7 +13,7 @@ const authAdmin = (req, res, next) => {
 };
 
 // user auth middleware
-const userAuth = (req, res, next) => {
+const userAuthCustom = (req, res, next) => {
   console.log("user auth check ✔");
   const token = "123";
   const isUserAuth = token === "123";
@@ -24,4 +24,4 @@ const userAuth = (req, res, next) => {
   }
 };
 
-module.exports = { authAdmin, userAuth };
+module.exports = { authAdmin, userAuthCustom };

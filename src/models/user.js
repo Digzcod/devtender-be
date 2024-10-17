@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 const validator = require("validator")
-// Helper function to check if email exists
+
+
 const isEmailUnique = async function (email) {
   const existingUser = await mongoose.models.User.findOne({ emailId: email });
   return !existingUser;
@@ -31,12 +34,6 @@ const userSchema = new mongoose.Schema(
             throw new Error("Invalid email address " + value)
         }
       },
-      validate: {
-        validator: isEmailUnique,
-        message: "This email is already been used",
-        isAsync: true,  // Validate email only during creation
-        skipOnupdate: true, // This ensures the check only happens on new user creation (not updates)
-      },
       immutable: true  // Makes sure the email cannot be changed after creation or tried to change
     },
     password: {
@@ -63,6 +60,7 @@ const userSchema = new mongoose.Schema(
     },
     skills: {
       type: [String],
+      maxLength: 5,
 
     },
     aboutMe: {
@@ -75,14 +73,25 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Pre-save hook to ensure that email cannot be changed once the user is created
-userSchema.pre('save', async function (next) {
-    // If the document is being updated (not created), skip email validation
-    if (!this.isNew && this.isModified('emailId')) {
-      throw new Error('Email cannot be changed after the user is created');
-    }
-    next();
-  });
+
+
+
+userSchema.methods.getJWT = async function() {
+  const user = this
+  const token = await jwt.sign({_id: user?._id}, "DevTender@Digz2024^", {expiresIn: "5min"})
+
+  return token
+}
+
+userSchema.methods.getValidatePassword = async function(passwordInputByUser) {
+  const user = this
+  const passwordHashed = user.password
+  const isPasswordValid = await bcrypt.compare(passwordInputByUser, passwordHashed)
+
+  return isPasswordValid
+  // return passwordHashed
+}
+
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
