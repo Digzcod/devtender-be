@@ -31,12 +31,13 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+
   try {
     const { emailId, password } = req.body;
     const client = await User.findOne({ emailId: emailId });
 
     if (!client) {
-      throw new Error("Invalid crendentials");
+      return res.status(400).json({ error: "Invalid Crendential" });
     }
     const isPasswordValid = await client.getValidatePassword(password);
     if (isPasswordValid) {
@@ -45,14 +46,15 @@ router.post("/login", async (req, res) => {
       // console.log(token);
 
       res.cookie("token", token);
-      res.send("Succesfully login🙂");
+      return res.status(200).json({ message: "Login successful", client });
     } else {
-      throw new Error("Invalid crendentials");
+      throw new Error("Invalid Crendential");
     }
   } catch (error) {
-    res.status(400).send("Error: " + error.message);
+    res.status(500).json({ error: "Server error: " + error.message });
   }
 });
+
 
 router.post("/logout", async (req, res) => {
   res.cookie("token", null, { expires: new Date(Date.now()) });

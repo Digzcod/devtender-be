@@ -9,7 +9,7 @@ const userAuth = async (req, res, next) => {
     }
 
     const decodedObj = await jwt.verify(token, "DevTender@Digz2024^");
-    console.log(decodedObj);
+    // console.log(decodedObj);
 
     const userId = decodedObj?._id;
     // console.log(userId);

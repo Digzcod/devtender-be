@@ -1,18 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/database");
 const cookieParser = require("cookie-parser");
-const auth = require("./routers/auth")
-const profile = require("./routers/profile")
-const request= require("./routers/request")
-
+const auth = require("./routers/auth");
+const profile = require("./routers/profile");
+const request = require("./routers/request");
+const user = require("./routers/user");
 
 const app = express();
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/", auth)
-app.use("/", profile)
-app.use("/", request)
+app.use("/", auth);
+app.use("/", profile);
+app.use("/", request);
+app.use("/", user);
 
 app.use("/", (req, res) => {
   res.send("Welcome to port 5000");
