@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
   try {
     // validate signup data from client or user request
     signUpValidate(req);
-    const { emailId, lastName, firstName, password, age } = req.body;
+    const { emailId, lastName, firstName, password, age, skills } = req.body;
 
     // encrypt password with bcrypt
     const hashedPassword = await bcrypt.hash(password, 8);
@@ -19,6 +19,7 @@ router.post("/signup", async (req, res) => {
       lastName,
       firstName,
       age,
+      skills,
       password: hashedPassword,
     });
     await user.save();

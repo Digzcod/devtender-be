@@ -7,7 +7,8 @@ const bcrypt = require("bcrypt");
 
 router.get("/profile/view", userAuth, async (req, res) => {
   try {
-    res.send("Reading cookies😚 " + req?.user);
+    const userData = req?.user
+    res.status(200).json(userData);
   } catch (error) {
     res
       .status(500)
